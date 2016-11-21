@@ -4331,6 +4331,7 @@ inherits(Parsable, RecordStream);
 */
 Parsable.prototype.stream = function(type, options) {
   type = type || 'csv';
+  options["relax"] = true; // relax must be set to prevent the open quote error from csv-parse
   var converter = DataStreamConverters[type];
   if (!converter) {
     throw new Error('Converting [' + type + '] data stream is not supported.');
